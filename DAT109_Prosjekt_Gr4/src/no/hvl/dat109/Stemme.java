@@ -3,6 +3,9 @@ package no.hvl.dat109;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,8 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 @Table(schema = "scriptDB", name = "stemme")
 public class Stemme {
 	
+	@ManyToOne
+	@JoinColumn(name = "deltaker")
 	private String deltaker;
+	
+	@ManyToOne
+	@JoinColumn(name = "stand")
 	private String stand;
+	
 	private Integer score;
 	
 	

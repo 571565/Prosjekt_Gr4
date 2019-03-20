@@ -1,9 +1,14 @@
 package no.hvl.dat109;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-
+@Entity
+@Table(schema = "DAT109_Prosjekt", name = "Stand")
 public class Stand {
 	
+	@Id
 	private String navn;
 	private Integer totalscore;
 

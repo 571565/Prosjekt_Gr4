@@ -6,29 +6,35 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Jury
+ * Servlet implementation class StemmeSide
  */
-@WebServlet("/Jury")
-public class Jury extends HttpServlet {
+@WebServlet("/StemmeSide")
+public class StemmeSide extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+       
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		HttpSession sesjon = request.getSession(false);
+        if (sesjon == null || sesjon.getAttribute("deltaker") == null) {
+        	response.sendRedirect("loggInn");
+        } else {
+        	request.setAttribute("tlf", sesjon.getAttribute("tlf"));
+        	request.getRequestDispatcher("WEB-INF/StemmeSide.jsp").forward(request, response);
+        }
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+		
+		
+	
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		
+		
+		
 	}
 
 }
