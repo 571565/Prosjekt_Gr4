@@ -24,7 +24,7 @@ public class DeltakerEAO {
         em.persist(s);
     }
 
-    public Deltaker hentBruker(Integer tlf) {
+    public Deltaker hentBruker(String tlf) {
         return em.find(Deltaker.class, tlf);
     }
 

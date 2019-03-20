@@ -43,9 +43,9 @@ public class LoggInn extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Integer tlf = Integer.parseInt(request.getParameter("tlf"));
+		String tlf = request.getParameter("tlf");
 
-		if (tlf == 0) {
+		if (tlf == "") {
 			response.sendRedirect("LoggInn");
 
 		} else {

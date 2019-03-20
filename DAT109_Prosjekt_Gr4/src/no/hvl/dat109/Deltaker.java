@@ -10,22 +10,22 @@ import javax.servlet.http.HttpServletRequest;
 public class Deltaker {
 
 	@Id
-	private Integer tlf;
+	private String tlf;
 
 	public Deltaker(HttpServletRequest request) {
-		this.tlf = Integer.parseInt(request.getParameter("tlf"));
+		this.tlf = request.getParameter("tlf");
 	}
 
-	public Deltaker(Integer tlf) {
+	public Deltaker(String tlf) {
 		super();
 		this.tlf = tlf;
 	}
 
-	public Integer getTlf() {
+	public String getTlf() {
 		return tlf;
 	}
 
-	public void setTlf(Integer tlf) {
+	public void setTlf(String tlf) {
 		this.tlf = tlf;
 	}
 
