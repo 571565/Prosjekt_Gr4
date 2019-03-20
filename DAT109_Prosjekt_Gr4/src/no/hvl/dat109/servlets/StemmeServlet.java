@@ -20,7 +20,6 @@ public class StemmeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private Stemme stemme;
-	private String standid;
 
 	@EJB
 	private StemmeEAO stemmeEAO;
@@ -41,6 +40,9 @@ public class StemmeServlet extends HttpServlet {
 				stemme = new Stemme(request);
 
 				stemmeEAO.leggTilStemme(stemme);
+				
+				Integer score = Integer.parseInt(request.getParameter("score"));
+				sesjon.setAttribute("score", score);
 
 				response.sendRedirect("StemmeSide");
 				return;
@@ -59,23 +61,20 @@ public class StemmeServlet extends HttpServlet {
 		request.setAttribute("stemme", stemme);
 		
 		HttpSession sesjon = request.getSession(false);
+	
 		
 		if (sesjon != null) {
 			Deltaker deltaker = (Deltaker) sesjon.getAttribute("deltaker");
 			if (deltaker != null) {
 				
-				standid = request.getParameter("standid");
-				
-				if (standid == "") {
-					response.sendRedirect("LoggInn");
-					return;
-				}
 				request.getRequestDispatcher("WEB-INF/Stemme.jsp").forward(request, response);
-				return;
+				
+				
 			}
 			
 		}
-		response.sendRedirect("LoggInn");
+		
+		
 		
 	}
 

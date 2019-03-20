@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Bekreftelse</title>
 </head>
 <body>
+<h3>Du har gitt ${score} til ${standid}</h3>
+<a href="StemmeSide">Se dine tidligere stemmer</a>
 
 </body>
 </html>

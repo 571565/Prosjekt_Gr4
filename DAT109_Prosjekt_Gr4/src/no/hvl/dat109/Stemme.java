@@ -34,8 +34,8 @@ public class Stemme {
 	}
 	
 	public Stemme(HttpServletRequest request) {
-		this.deltaker = request.getParameter("deltakerid");
-		this.stand = request.getParameter("stand");
+		this.deltaker = request.getParameter("deltaker");
+		this.stand = request.getParameter("standid");
 		this.score = Integer.parseInt(request.getParameter("score"));
 	}
 	
