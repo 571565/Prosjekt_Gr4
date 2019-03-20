@@ -17,11 +17,16 @@ import no.hvl.dat109.EAO.DeltakerEAO;
 public class LoggInn extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	private String standid;
+	
 	@EJB
 	private DeltakerEAO deltakerEAO;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		standid = request.getParameter("standid");
+		
 
 		HttpSession sesjon = request.getSession(false);
 
@@ -30,7 +35,12 @@ public class LoggInn extends HttpServlet {
 
 			if (deltaker != null) {
 				sesjon.setAttribute("deltaker", deltaker);
+				
+				if (standid == "") {
 				response.sendRedirect("StemmeSide");
+				} else {
+				response.sendRedirect("Stemme" + "?standid=" + standid);
+				}
 				return;
 			}
 
@@ -69,7 +79,7 @@ public class LoggInn extends HttpServlet {
 
 			sesjon.setAttribute("deltaker", deltaker);
 			
-			response.sendRedirect("Stemme");
+			response.sendRedirect("Stemme" + "?standid=" + standid);
 		}
 
 	}
