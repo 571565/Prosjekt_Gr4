@@ -6,7 +6,7 @@ import javax.persistence.Table;
 import javax.servlet.http.HttpServletRequest;
 
 @Entity
-@Table(schema = "scriptDB", name = "Deltaker")
+@Table(schema = "DAT109_Prosjekt", name = "Deltaker")
 public class Deltaker {
 
 	@Id

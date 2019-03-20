@@ -10,15 +10,13 @@ import javax.persistence.Table;
 import javax.servlet.http.HttpServletRequest;
 
 @Entity
-@Table(schema = "scriptDB", name = "stemme")
+@Table(schema = "DAT109_Prosjekt", name = "Stemme")
 public class Stemme {
 	
-	@ManyToOne
-	@JoinColumn(name = "deltaker")
+	@Id
 	private String deltaker;
 	
-	@ManyToOne
-	@JoinColumn(name = "stand")
+	@Id
 	private String stand;
 	
 	private Integer score;
