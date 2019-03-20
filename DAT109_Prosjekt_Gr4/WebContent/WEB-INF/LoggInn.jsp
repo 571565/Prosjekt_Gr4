@@ -12,7 +12,7 @@
 	<form method = "post">
 		<fieldset>
 			<label for = "tlf">Telefon nummer: </label><input type = "text" name ="tlf">
-			<p><input type="submit" value="LoggInn"></p>
+			<p><input type="submit" value="Logg Inn"></p>
 		</fieldset>
 	</form>
 

@@ -21,6 +21,10 @@ public class Stemme {
 	
 	private Integer score;
 	
+	public Stemme() {
+		
+	}
+	
 	
 	public Stemme(String deltaker, String stand, Integer score) {
 		super();

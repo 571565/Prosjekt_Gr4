@@ -11,6 +11,10 @@ public class Stand {
 	@Id
 	private String navn;
 	private Integer totalscore;
+	
+	public Stand() {
+		
+	}
 
 	
 	public Stand(String navn, Integer totalscore) {

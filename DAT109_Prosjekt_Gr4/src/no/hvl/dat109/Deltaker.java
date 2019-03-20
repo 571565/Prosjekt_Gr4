@@ -11,6 +11,10 @@ public class Deltaker {
 
 	@Id
 	private String tlf;
+	
+	public Deltaker() {
+		
+	}
 
 	public Deltaker(HttpServletRequest request) {
 		this.tlf = request.getParameter("tlf");
