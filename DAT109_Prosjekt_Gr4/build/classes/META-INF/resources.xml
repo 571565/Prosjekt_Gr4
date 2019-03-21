@@ -2,8 +2,8 @@
 <resources>
     <Resource id="DAT109_Prosjekt" name="DAT109_Prosjekt" type="javax.sql.DataSource">
         jdbcDriver = org.postgresql.Driver
-        jdbcUrl = jdbc:postgresql://data1.hib.no:5432/h571532
-        userName =  h571532
+        jdbcUrl = jdbc:postgresql://data1.hib.no:5432/h571565
+        userName =  h571565
         password =  pass
     </Resource>
 </resources>

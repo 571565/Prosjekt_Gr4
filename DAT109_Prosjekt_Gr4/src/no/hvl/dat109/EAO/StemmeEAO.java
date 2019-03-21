@@ -12,6 +12,7 @@ import javax.persistence.Query;
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 
 import no.hvl.dat109.Stemme;
+import no.hvl.dat109.StemmeOgStand;
 
 
 @Stateless
@@ -23,13 +24,19 @@ public class StemmeEAO {
     public void leggTilStemme(Stemme s) {
         em.persist(s);
     }
-
-    public Stemme hentStemme(String mobil) {
-        return em.find(Stemme.class, mobil);
+    
+    public void oppdaterStemme(Stemme s) {
+    	em.refresh(s);
     }
 
-    public List<Stemme> hentStemmer() {
+    public Stemme finnStemme(String s) {
+    	return em.find(Stemme.class, s);
+    }
+
+    public List<Stemme> hentStemmer(String stand) {
         
-        return (List<Stemme>) em.createQuery("SELECT s FROM stemme s").getResultList();
+        return (List<Stemme>) em.createQuery("SELECT s FROM Stemme s WHERE s.deltaker LIKE :custStand")
+        		.setParameter("custStand", stand)
+        		.getResultList();
     }
 }

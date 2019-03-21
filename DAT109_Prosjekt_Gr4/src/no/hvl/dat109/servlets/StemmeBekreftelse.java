@@ -24,7 +24,7 @@ public class StemmeBekreftelse extends HttpServlet {
         } else {
         	request.setAttribute("standid", sesjon.getAttribute("standid"));
         	request.setAttribute("score", sesjon.getAttribute("score"));
-        	request.getRequestDispatcher("WEB-INF/StemmeSide.jsp").forward(request, response);
+        	request.getRequestDispatcher("WEB-INF/StemmeBekreftelse.jsp").forward(request, response);
         }
 	}
 		

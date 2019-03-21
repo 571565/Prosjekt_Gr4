@@ -80,6 +80,8 @@ public class LoggInn extends HttpServlet {
 			sesjon = request.getSession(true);
 
 			sesjon.setMaxInactiveInterval(1000);
+			
+			sesjon.setAttribute("tlf", tlf);
 
 			sesjon.setAttribute("deltaker", deltaker);
 			
