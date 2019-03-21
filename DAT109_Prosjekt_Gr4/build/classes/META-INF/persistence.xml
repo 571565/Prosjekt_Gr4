@@ -9,12 +9,35 @@
 		<jta-data-source>DAT109_Prosjekt</jta-data-source>
 		<class>no.hvl.dat108.Deltaker</class>
 		<class>no.hvl.dat108.DeltakerEAO</class>
-		<class>no.hvl.dat108.Stand</class>
-		<class>no.hvl.dat108.StandEAO</class>
+		
+		<properties>
+			<property name="eclipselink.weaving" value="false" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="StemmePU"
+		transaction-type="JTA">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<jta-data-source>DAT109_Prosjekt</jta-data-source>
 		<class>no.hvl.dat108.Stemme</class>
 		<class>no.hvl.dat108.StemmeEAO</class>
+		
+		<properties>
+			<property name="eclipselink.weaving" value="false" />
+		</properties>
+	</persistence-unit>
+	
+	
+	<persistence-unit name="StandPU"
+		transaction-type="JTA">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<jta-data-source>DAT109_Prosjekt</jta-data-source>
+		<class>no.hvl.dat108.Stand</class>
+		<class>no.hvl.dat108.StandEAO</class>
+		
 		<properties>
 			<property name="eclipselink.weaving" value="false" />
 		</properties>
 	</persistence-unit>
 </persistence>
+

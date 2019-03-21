@@ -17,7 +17,7 @@ import no.hvl.dat109.Stemme;
 @Stateless
 public class StemmeEAO {
     
-	@PersistenceContext(name = "DeltakerPU")
+	@PersistenceContext(name = "StemmePU")
     private EntityManager em;
 
     public void leggTilStemme(Stemme s) {
