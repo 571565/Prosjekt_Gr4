@@ -7,8 +7,8 @@
 		transaction-type="JTA">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<jta-data-source>DAT109_Prosjekt</jta-data-source>
-		<class>no.hvl.dat108.Deltaker</class>
-		<class>no.hvl.dat108.DeltakerEAO</class>
+		<class>no.hvl.dat109.Deltaker</class>
+		<class>no.hvl.dat109.DeltakerEAO</class>
 		
 		<properties>
 			<property name="eclipselink.weaving" value="false" />
@@ -19,8 +19,8 @@
 		transaction-type="JTA">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<jta-data-source>DAT109_Prosjekt</jta-data-source>
-		<class>no.hvl.dat108.Stemme</class>
-		<class>no.hvl.dat108.StemmeEAO</class>
+		<class>no.hvl.dat109.Stemme</class>
+		<class>no.hvl.dat109.StemmeEAO</class>
 		
 		<properties>
 			<property name="eclipselink.weaving" value="false" />
@@ -32,8 +32,8 @@
 		transaction-type="JTA">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<jta-data-source>DAT109_Prosjekt</jta-data-source>
-		<class>no.hvl.dat108.Stand</class>
-		<class>no.hvl.dat108.StandEAO</class>
+		<class>no.hvl.dat109.Stand</class>
+		<class>no.hvl.dat109.StandEAO</class>
 		
 		<properties>
 			<property name="eclipselink.weaving" value="false" />

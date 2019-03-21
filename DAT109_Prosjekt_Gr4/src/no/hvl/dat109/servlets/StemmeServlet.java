@@ -36,13 +36,17 @@ public class StemmeServlet extends HttpServlet {
 			Deltaker deltaker = (Deltaker) sesjon.getAttribute("deltaker");
 
 			if (deltaker != null) {
-
-				stemme = new Stemme(request);
+				
+				String tlfDeltaker = deltaker.getTlf();
+				String standi = (String) sesjon.getAttribute("standid");
+				Integer score = Integer.parseInt(request.getParameter("score"));
+				
+				stemme = new Stemme(tlfDeltaker, standi, score);
+				System.out.println(stemme);
 
 				stemmeEAO.leggTilStemme(stemme);
 				
-				Integer score = Integer.parseInt(request.getParameter("score"));
-				sesjon.setAttribute("score", score);
+				
 
 				response.sendRedirect("StemmeSide");
 				return;

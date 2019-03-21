@@ -28,8 +28,8 @@ public class StemmeEAO {
         return em.find(Stemme.class, mobil);
     }
 
-    public List<Stemme> hentBrukere() {
+    public List<Stemme> hentStemmer() {
         
-        return (List<Stemme>) em.createQuery("SELECT s FROM Bruker s").getResultList();
+        return (List<Stemme>) em.createQuery("SELECT s FROM stemme s").getResultList();
     }
 }
