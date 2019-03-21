@@ -45,7 +45,7 @@ public class StemmeServlet extends HttpServlet {
 				System.out.println(stemme);
 
 				stemmeEAO.leggTilStemme(stemme);
-				//yo
+				
 				
 				
 
