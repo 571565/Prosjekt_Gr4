@@ -19,8 +19,7 @@ public class LoggInn extends HttpServlet {
 
 	private String standid = "Hvl";
 	
-	@EJB
-	private DeltakerEAO deltakerEAO;
+	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -66,13 +65,6 @@ public class LoggInn extends HttpServlet {
 
 		} else {
 
-			Deltaker deltaker = deltakerEAO.hentBruker(tlf);
-
-			if (deltaker == null) {
-				deltaker = new Deltaker(tlf);
-				deltakerEAO.leggTilbruker(deltaker);
-			}
-
 			HttpSession sesjon = request.getSession(false);
 			if (sesjon != null) {
 				sesjon.invalidate();
@@ -81,7 +73,7 @@ public class LoggInn extends HttpServlet {
 
 			sesjon.setMaxInactiveInterval(1000);
 
-			sesjon.setAttribute("deltaker", deltaker);
+			
 			
 			sesjon.setAttribute("standid", standid);
 			
