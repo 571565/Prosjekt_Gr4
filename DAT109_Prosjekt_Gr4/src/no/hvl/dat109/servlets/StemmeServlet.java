@@ -46,9 +46,6 @@ public class StemmeServlet extends HttpServlet {
 
 				stemmeEAO.leggTilStemme(stemme);
 				
-				
-				
-
 				response.sendRedirect("StemmeSide");
 				return;
 
