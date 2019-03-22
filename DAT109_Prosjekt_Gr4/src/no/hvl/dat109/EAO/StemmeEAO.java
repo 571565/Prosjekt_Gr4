@@ -26,7 +26,9 @@ public class StemmeEAO {
     }
     
     public void oppdaterStemme(Stemme s) {
-    	em.refresh(s);
+    	em.createQuery("UPDATE Stemme p SET p.score = :score")
+    			.setParameter("score", s.getScore())
+    	        .executeUpdate();
     }
 
     public Stemme finnStemme(String s) {

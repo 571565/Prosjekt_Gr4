@@ -21,6 +21,8 @@ public class StemmeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private Stemme stemme;
+	
+	private String standid;
 
 	@EJB
 	private StemmeEAO stemmeEAO;
@@ -43,16 +45,13 @@ public class StemmeServlet extends HttpServlet {
 				Integer score = Integer.parseInt(request.getParameter("score"));
 				
 				stemme = new Stemme(tlfDeltaker, stand, score);
-				Stemme likStemme = stemmeEAO.finnStemme(tlfDeltaker);
 				
-				if (likStemme != null ) {
-					if (likStemme.getStand().equals(stand)) {
-						stemmeEAO.oppdaterStemme(stemme);
-					}
-					
-				} else {
-					stemmeEAO.leggTilStemme(stemme);
+				try {
+				stemmeEAO.leggTilStemme(stemme);
+				} catch (Exception e) {
+					stemmeEAO.oppdaterStemme(stemme);
 				}
+				
 				
 				sesjon.setAttribute("score", score);
 				
@@ -72,6 +71,8 @@ public class StemmeServlet extends HttpServlet {
 		
 		request.setAttribute("stemme", stemme);
 		
+		
+		
 		HttpSession sesjon = request.getSession(false);
 	
 		
@@ -84,7 +85,23 @@ public class StemmeServlet extends HttpServlet {
 				
 			}
 			
+		} else {
+			standid = request.getParameter("standid");
+			
+			if (standid == null || standid == "") {
+				standid = "Hvl";
+				
+			}
+			
+			sesjon = request.getSession(true);
+			
+			sesjon.setAttribute("standid", standid);
+
+			sesjon.setMaxInactiveInterval(1000);
+			
+			response.sendRedirect("LoggInn");
 		}
+		
 		
 		
 		
