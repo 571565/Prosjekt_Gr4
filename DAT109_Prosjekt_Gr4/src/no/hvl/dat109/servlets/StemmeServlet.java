@@ -26,8 +26,6 @@ public class StemmeServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		
 
 		HttpSession sesjon = request.getSession(false);
 
@@ -36,19 +34,23 @@ public class StemmeServlet extends HttpServlet {
 			Deltaker deltaker = (Deltaker) sesjon.getAttribute("deltaker");
 
 			if (deltaker != null) {
-				
+
 				String tlfDeltaker = deltaker.getTlf();
 				String standi = (String) sesjon.getAttribute("standid");
 				Integer score = Integer.parseInt(request.getParameter("score"));
-				
+
 				stemme = new Stemme(tlfDeltaker, standi, score);
 				System.out.println(stemme);
 				sesjon.setAttribute("score", score);
+				try {
+					stemmeEAO.leggTilStemme(stemme);
 
-				stemmeEAO.leggTilStemme(stemme);
+					response.sendRedirect("StemmeBekreftelse");
+					return;
+				} catch (Exception e) {
+					stemmeEAO.oppdaterStemme(stemme);
 
-				response.sendRedirect("StemmeBekreftelse");
-				return;
+				}
 
 			}
 
@@ -60,23 +62,19 @@ public class StemmeServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		HttpSession sesjon = request.getSession(false);
-	
-		
+
 		if (sesjon != null) {
 			Deltaker deltaker = (Deltaker) sesjon.getAttribute("deltaker");
 			if (deltaker != null) {
-				
+
 				request.getRequestDispatcher("WEB-INF/Stemme.jsp").forward(request, response);
-				
-				
+
 			}
-			
+
 		}
-		
-		
-		
+
 	}
 
 }

@@ -13,29 +13,32 @@ import org.eclipse.persistence.config.PersistenceUnitProperties;
 
 import no.hvl.dat109.Stemme;
 
-
 @Stateless
 public class StemmeEAO {
-    
+
 	@PersistenceContext(name = "StemmePU")
-    private EntityManager em;
+	private EntityManager em;
 
-    public void leggTilStemme(Stemme s) {
-        em.persist(s);
-    }
+	public void leggTilStemme(Stemme s) {
+		em.persist(s);
+	}
 
-    public Stemme hentStemme(String mobil) {
-        return em.find(Stemme.class, mobil);
-    }
+	public Stemme hentStemme(String mobil) {
+		return em.find(Stemme.class, mobil);
+	}
 
-    public List<Stemme> hentStemmer() {
-        
-        return (List<Stemme>) em.createQuery("SELECT s FROM stemme s").getResultList();
-    }
-    
-    public List<Stemme> hentStemmeNr(String tlf) {
-    	return (List<Stemme>) em.createQuery("SELECT s FROM Stemme s WHERE s.deltaker LIKE :custStand")
-        		.setParameter("custStand", tlf)
-        		.getResultList();
-    }
+	public List<Stemme> hentStemmer() {
+
+		return (List<Stemme>) em.createQuery("SELECT s FROM stemme s").getResultList();
+	}
+
+	public List<Stemme> hentStemmeNr(String tlf) {
+		return (List<Stemme>) em.createQuery("SELECT s FROM Stemme s WHERE s.deltaker LIKE :custStand")
+				.setParameter("custStand", tlf).getResultList();
+	}
+
+	public void oppdaterStemme(Stemme stemme) {
+		// TODO Auto-generated method stub
+
+	}
 }
