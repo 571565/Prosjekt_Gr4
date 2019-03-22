@@ -1,16 +1,19 @@
 package no.hvl.dat109;
 
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.servlet.http.HttpServletRequest;
 
 @Entity
-@Table(schema = "DAT109_Prosjekt", name = "Stemme")
+@Table(schema = "DAT109_Prosjekt", name = "stemme")
 public class Stemme {
 	
 	@Id
@@ -19,7 +22,7 @@ public class Stemme {
 	@Id
 	private String stand;
 	
-	private Integer score;
+	private int score;
 	
 	public Stemme() {
 		
@@ -63,5 +66,13 @@ public class Stemme {
 	public void setScore(Integer score) {
 		this.score = score;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Stemme [deltaker=" + deltaker + ", stand=" + stand + ", score=" + score + "]";
+	}
+	
+	
 
 }

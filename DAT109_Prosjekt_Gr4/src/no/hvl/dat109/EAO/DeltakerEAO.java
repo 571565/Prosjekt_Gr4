@@ -28,8 +28,8 @@ public class DeltakerEAO {
         return em.find(Deltaker.class, tlf);
     }
 
-    public List<Deltaker> hentBrukere() {
+    public List<Deltaker> hentDeltakere() {
         
-        return (List<Deltaker>) em.createQuery("SELECT s FROM Bruker s").getResultList();
+        return (List<Deltaker>) em.createQuery("SELECT s FROM deltaker s").getResultList();
     }
 }

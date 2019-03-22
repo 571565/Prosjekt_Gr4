@@ -1,12 +1,15 @@
 package no.hvl.dat109;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.servlet.http.HttpServletRequest;
 
 @Entity
-@Table(schema = "DAT109_Prosjekt", name = "Deltaker")
+@Table(schema = "DAT109_Prosjekt", name = "deltaker")
 public class Deltaker {
 
 	@Id
@@ -21,7 +24,6 @@ public class Deltaker {
 	}
 
 	public Deltaker(String tlf) {
-		super();
 		this.tlf = tlf;
 	}
 

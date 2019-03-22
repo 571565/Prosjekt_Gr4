@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import no.hvl.dat109.Deltaker;
 import no.hvl.dat109.Stemme;
+import no.hvl.dat109.StemmeOgStand;
 import no.hvl.dat109.EAO.StemmeEAO;
 
 @WebServlet("/Stemme")
@@ -20,6 +21,8 @@ public class StemmeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private Stemme stemme;
+	
+	private String standid;
 
 	@EJB
 	private StemmeEAO stemmeEAO;
@@ -36,6 +39,7 @@ public class StemmeServlet extends HttpServlet {
 			Deltaker deltaker = (Deltaker) sesjon.getAttribute("deltaker");
 
 			if (deltaker != null) {
+<<<<<<< HEAD
 
 				String tlf = deltaker.getTlf();
 				String standid = (String) sesjon.getAttribute("standid");
@@ -43,11 +47,25 @@ public class StemmeServlet extends HttpServlet {
 
 				
 				stemmeEAO.leggTilStemme(new Stemme(tlf, standid, score));
+=======
+				
+				String tlfDeltaker = deltaker.getTlf();
+				String stand = (String) sesjon.getAttribute("standid");
+				Integer score = Integer.parseInt(request.getParameter("score"));
+				
+				stemme = new Stemme(tlfDeltaker, stand, score);
+				
+				try {
+				stemmeEAO.leggTilStemme(stemme);
+				} catch (Exception e) {
+					stemmeEAO.oppdaterStemme(stemme);
+				}
+>>>>>>> origin/Kjetil
 				
 				
 				sesjon.setAttribute("score", score);
-
-				response.sendRedirect("StemmeSide");
+				
+				response.sendRedirect("StemmeBekreftelse");
 				return;
 
 			}
@@ -63,6 +81,8 @@ public class StemmeServlet extends HttpServlet {
 		
 		request.setAttribute("stemme", stemme);
 		
+		
+		
 		HttpSession sesjon = request.getSession(false);
 	
 		
@@ -75,7 +95,23 @@ public class StemmeServlet extends HttpServlet {
 				
 			}
 			
+		} else {
+			standid = request.getParameter("standid");
+			
+			if (standid == null || standid == "") {
+				standid = "Hvl";
+				
+			}
+			
+			sesjon = request.getSession(true);
+			
+			sesjon.setAttribute("standid", standid);
+
+			sesjon.setMaxInactiveInterval(1000);
+			
+			response.sendRedirect("LoggInn");
 		}
+		
 		
 		
 		

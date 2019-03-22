@@ -17,7 +17,7 @@ import no.hvl.dat109.EAO.DeltakerEAO;
 public class LoggInn extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private String standid = "Hvl";
+	private String standid;
 	
 	@EJB
 	DeltakerEAO deltakerEAO;
@@ -25,28 +25,18 @@ public class LoggInn extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		//standid = request.getParameter("standid");
+		
 		
 
 		HttpSession sesjon = request.getSession(false);
-
+		
 		if (sesjon != null) {
-			Deltaker deltaker = (Deltaker) sesjon.getAttribute("deltaker");
-
-			if (deltaker != null) {
-				sesjon.setAttribute("deltaker", deltaker);
-				
-				if (standid == "") {
-				response.sendRedirect("StemmeSide");
-				return;
-				} else {
-				response.sendRedirect("Stemme" + "?standid=" + standid);
-				return;
-				}
-				
-			}
-
+			standid = (String) sesjon.getAttribute("standid");
+		} else {
+			response.sendRedirect("Stemme");
+			return;
 		}
+
 		
 		request.getRequestDispatcher("WEB-INF/login.jsp").forward(request, response);
 		
@@ -72,14 +62,18 @@ public class LoggInn extends HttpServlet {
 				deltaker = new Deltaker(tlf);
 			}
 
-			HttpSession sesjon = request.getSession(false);
-			if (sesjon != null) {
-				sesjon.invalidate();
-			}
-			sesjon = request.getSession(true);
-
+			
+			HttpSession sesjon = request.getSession(true);
+			
+			
 			sesjon.setMaxInactiveInterval(1000);
 			
+<<<<<<< HEAD
+=======
+			
+			sesjon.setAttribute("tlf", tlf);
+		
+>>>>>>> origin/Kjetil
 			sesjon.setAttribute("deltaker", deltaker);
 
 			sesjon.setAttribute("tlf", tlf);

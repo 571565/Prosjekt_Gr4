@@ -1,15 +1,19 @@
 package no.hvl.dat109;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(schema = "DAT109_Prosjekt", name = "Stand")
+@Table(schema = "DAT109_Prosjekt", name = "stand")
 public class Stand {
 	
 	@Id
 	private String navn;
+	
 	private Integer totalscore;
 	
 	public Stand() {
