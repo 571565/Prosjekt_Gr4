@@ -68,12 +68,8 @@ public class LoggInn extends HttpServlet {
 			
 			sesjon.setMaxInactiveInterval(1000);
 			
-<<<<<<< HEAD
-=======
-			
 			sesjon.setAttribute("tlf", tlf);
-		
->>>>>>> origin/Kjetil
+
 			sesjon.setAttribute("deltaker", deltaker);
 
 			sesjon.setAttribute("tlf", tlf);

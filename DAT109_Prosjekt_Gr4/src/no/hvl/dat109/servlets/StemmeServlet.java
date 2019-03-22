@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import no.hvl.dat109.Deltaker;
 import no.hvl.dat109.Stemme;
-import no.hvl.dat109.StemmeOgStand;
 import no.hvl.dat109.EAO.StemmeEAO;
 
 @WebServlet("/Stemme")
@@ -39,28 +38,22 @@ public class StemmeServlet extends HttpServlet {
 			Deltaker deltaker = (Deltaker) sesjon.getAttribute("deltaker");
 
 			if (deltaker != null) {
-<<<<<<< HEAD
+
 
 				String tlf = deltaker.getTlf();
 				String standid = (String) sesjon.getAttribute("standid");
 				Integer score = Integer.parseInt(request.getParameter("score"));
 
 				
-				stemmeEAO.leggTilStemme(new Stemme(tlf, standid, score));
-=======
+
 				
-				String tlfDeltaker = deltaker.getTlf();
-				String stand = (String) sesjon.getAttribute("standid");
-				Integer score = Integer.parseInt(request.getParameter("score"));
-				
-				stemme = new Stemme(tlfDeltaker, stand, score);
+				stemme = new Stemme(tlf, standid, score);
 				
 				try {
 				stemmeEAO.leggTilStemme(stemme);
 				} catch (Exception e) {
 					stemmeEAO.oppdaterStemme(stemme);
 				}
->>>>>>> origin/Kjetil
 				
 				
 				sesjon.setAttribute("score", score);
