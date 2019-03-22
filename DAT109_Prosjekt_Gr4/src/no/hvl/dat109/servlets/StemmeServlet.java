@@ -43,13 +43,11 @@ public class StemmeServlet extends HttpServlet {
 				
 				stemme = new Stemme(tlfDeltaker, standi, score);
 				System.out.println(stemme);
+				sesjon.setAttribute("score", score);
 
 				stemmeEAO.leggTilStemme(stemme);
-				//yo
-				
-				
 
-				response.sendRedirect("StemmeSide");
+				response.sendRedirect("StemmeBekreftelse");
 				return;
 
 			}
@@ -62,8 +60,6 @@ public class StemmeServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		request.setAttribute("stemme", stemme);
 		
 		HttpSession sesjon = request.getSession(false);
 	

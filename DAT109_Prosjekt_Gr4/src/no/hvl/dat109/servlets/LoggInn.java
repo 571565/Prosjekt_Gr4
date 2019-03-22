@@ -85,6 +85,8 @@ public class LoggInn extends HttpServlet {
 			
 			sesjon.setAttribute("standid", standid);
 			
+			sesjon.setAttribute("tlf", tlf);
+			
 			response.sendRedirect("Stemme" + "?standid=" + standid);
 		}
 

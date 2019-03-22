@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import no.hvl.dat109.Deltaker;
+
 /**
  * Servlet implementation class StemmeBekreftelse
  */
@@ -22,9 +24,11 @@ public class StemmeBekreftelse extends HttpServlet {
         if (sesjon == null || sesjon.getAttribute("deltaker") == null) {
         	response.sendRedirect("LoggInn");
         } else {
+        	Deltaker deltaker = (Deltaker) sesjon.getAttribute("deltaker");
+        	
         	request.setAttribute("standid", sesjon.getAttribute("standid"));
         	request.setAttribute("score", sesjon.getAttribute("score"));
-        	request.getRequestDispatcher("WEB-INF/StemmeSide.jsp").forward(request, response);
+        	request.getRequestDispatcher("WEB-INF/StemmeBekreftelse.jsp").forward(request, response);
         }
 	}
 		

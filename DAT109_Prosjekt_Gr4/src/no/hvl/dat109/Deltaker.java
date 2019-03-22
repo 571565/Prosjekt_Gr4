@@ -32,4 +32,11 @@ public class Deltaker {
 		this.tlf = tlf;
 	}
 
+	@Override
+	public String toString() {
+		return "Deltaker [tlf=" + tlf + "]";
+	}
+	
+	
+
 }

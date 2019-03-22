@@ -32,4 +32,10 @@ public class StemmeEAO {
         
         return (List<Stemme>) em.createQuery("SELECT s FROM stemme s").getResultList();
     }
+    
+    public List<Stemme> hentStemmeNr(String tlf) {
+    	return (List<Stemme>) em.createQuery("SELECT s FROM Stemme s WHERE s.deltaker LIKE :custStand")
+        		.setParameter("custStand", tlf)
+        		.getResultList();
+    }
 }
