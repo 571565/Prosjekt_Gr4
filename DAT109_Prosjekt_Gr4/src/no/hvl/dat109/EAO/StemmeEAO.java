@@ -26,8 +26,10 @@ public class StemmeEAO {
     }
     
     public void oppdaterStemme(Stemme s) {
-    	em.createQuery("UPDATE Stemme p SET p.score = :score")
+    	em.createQuery("UPDATE Stemme p SET p.score = :score WHERE p.deltaker = :deltaker AND p.stand = :stand")
     			.setParameter("score", s.getScore())
+    			.setParameter("deltaker", s.getDeltaker())
+    			.setParameter("stand", s.getStand())
     	        .executeUpdate();
     }
 

@@ -30,14 +30,14 @@ public class LoggInn extends HttpServlet {
 
 		HttpSession sesjon = request.getSession(false);
 		
-		if (sesjon != null) {
+		if (sesjon != null && sesjon.getAttribute("deltaker") != null) {
 			standid = (String) sesjon.getAttribute("standid");
-		} else {
 			response.sendRedirect("Stemme");
 			return;
+		} else {
+			standid = "UiB";
 		}
 
-		
 		request.getRequestDispatcher("WEB-INF/login.jsp").forward(request, response);
 		
 
