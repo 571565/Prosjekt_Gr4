@@ -38,7 +38,8 @@ public class StemmeEAO {
 	}
 
 	public void oppdaterStemme(Stemme stemme) {
-		// TODO Auto-generated method stub
-
+		em.createQuery("UPDATE Stemme p SET p.score = :score WHERE p.deltaker = '" + stemme.getDeltaker() + "' AND p.stand ='" + stemme.getStand() + "'")
+		.setParameter("score", stemme.getScore())
+        .executeUpdate();
 	}
 }

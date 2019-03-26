@@ -17,7 +17,7 @@ import no.hvl.dat109.EAO.DeltakerEAO;
 public class LoggInn extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private String standid = "Hvl";
+	private String standid = "UiB";
 	
 	@EJB
 	private DeltakerEAO deltakerEAO;

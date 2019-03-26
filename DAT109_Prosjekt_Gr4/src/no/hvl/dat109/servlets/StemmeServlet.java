@@ -45,12 +45,12 @@ public class StemmeServlet extends HttpServlet {
 				try {
 					stemmeEAO.leggTilStemme(stemme);
 
-					response.sendRedirect("StemmeBekreftelse");
-					return;
 				} catch (Exception e) {
 					stemmeEAO.oppdaterStemme(stemme);
 
 				}
+				response.sendRedirect("StemmeBekreftelse");
+				return;
 
 			}
 
