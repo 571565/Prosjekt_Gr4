@@ -12,7 +12,6 @@ import javax.persistence.Query;
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 
 import no.hvl.dat109.Stemme;
-import no.hvl.dat109.StemmeOgStand;
 
 
 @Stateless

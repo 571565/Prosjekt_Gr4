@@ -3,4 +3,17 @@
   <welcome-file-list>
     <welcome-file>LoggInn</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <display-name>JuryLoggInn</display-name>
+    <servlet-name>JuryLoggInn</servlet-name>
+    <servlet-class>no.hvl.dat109.servlets.JuryLoggInn</servlet-class>
+    <init-param>
+      <param-name>pw</param-name>
+      <param-value>123</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JuryLoggInn</servlet-name>
+    <url-pattern>/JuryLoggInn</url-pattern>
+  </servlet-mapping>
 </web-app>

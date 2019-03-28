@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import no.hvl.dat109.Deltaker;
 import no.hvl.dat109.Stemme;
-import no.hvl.dat109.StemmeOgStand;
 import no.hvl.dat109.EAO.StandEAO;
 import no.hvl.dat109.EAO.StemmeEAO;
 

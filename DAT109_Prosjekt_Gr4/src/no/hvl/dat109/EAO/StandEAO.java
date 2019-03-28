@@ -32,7 +32,10 @@ public class StandEAO {
     	return em.find(Stemme.class, s);
     }
     
-    
+    public List<Stand> hentStands() {
+    	return (List<Stand>) em.createQuery("SELECT s FROM Stand s")
+        		.getResultList();
+    }
 
     public List<Stemme> hentStand(String stand) {
         
