@@ -17,9 +17,7 @@ import no.hvl.dat109.Stemme;
 import no.hvl.dat109.EAO.DeltakerEAO;
 import no.hvl.dat109.EAO.StemmeEAO;
 
-/**
- * Servlet implementation class StemmeSide
- */
+
 @WebServlet("/StemmeSide")
 public class StemmeSide extends HttpServlet {
 	private static final long serialVersionUID = 1L;

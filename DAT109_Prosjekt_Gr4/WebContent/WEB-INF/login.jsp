@@ -15,6 +15,7 @@
 			<p><input type="submit" value="Logg Inn"></p>
 		</fieldset>
 	</form>
+	<a href="LoggInnStand">Logg inn på din stand</a>
 
 </body>
 </html>

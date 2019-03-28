@@ -10,8 +10,7 @@
 <body>
 	<h3>Tidligere stemmer</h3>
 	<c:forEach items="${stemmer}" var="stemme">
-   <br>${stemme.deltaker}   ${stemme.stand}   ${stemme.score}
+   <br><p><a href = "Stemme?standid=${stemme.stand}">${stemme.stand}</a>,  ${stemme.score} poeng.
 </c:forEach>
-    <p><input type="submit" value="Scan QR"></p>
 </body>
 </html>
