@@ -2,6 +2,7 @@ package no.hvl.dat109.servlets;
 
 import java.io.IOException;
 import java.net.HttpCookie;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import no.hvl.dat109.Deltaker;
 import no.hvl.dat109.Stemme;
 import no.hvl.dat109.StemmeOgStand;
+import no.hvl.dat109.EAO.StandEAO;
 import no.hvl.dat109.EAO.StemmeEAO;
 
 @WebServlet("/Stemme")
@@ -23,6 +25,9 @@ public class StemmeServlet extends HttpServlet {
 	private Stemme stemme;
 	
 	private String standid;
+
+	@EJB
+	private StandEAO standEAO;
 
 	@EJB
 	private StemmeEAO stemmeEAO;
@@ -48,9 +53,15 @@ public class StemmeServlet extends HttpServlet {
 				
 				try {
 				stemmeEAO.leggTilStemme(stemme);
+				
 				} catch (Exception e) {
 					stemmeEAO.oppdaterStemme(stemme);
+					
 				}
+				List<Stemme> stemmer = stemmeEAO.hentStemmerPaaStand(stand);
+				Integer totalscore = stemmer.stream().filter(x -> x.getStand().equals(stand))
+						.mapToInt(x -> x.getScore()).sum();
+				standEAO.oppdaterTotalscore(totalscore, stand);
 				
 				
 				sesjon.setAttribute("score", score);

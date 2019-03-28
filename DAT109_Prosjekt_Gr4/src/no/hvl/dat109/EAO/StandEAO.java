@@ -19,16 +19,20 @@ public class StandEAO {
         em.persist(s);
     }
     
-    public void oppdaterStand(Stemme s) {
-    	em.createQuery("UPDATE Stand p SET p.totalscore = p.totalscore + :score WHERE p.navn LIKE :standNavn")
-    			.setParameter("score", s.getScore())
-    			.setParameter("standNavn", s.getStand())
+   
+    
+    public void oppdaterTotalscore(Integer totalscore, String standNavn) {
+    	em.createQuery("UPDATE Stand p SET p.totalscore = :score WHERE p.navn LIKE :standNavn")
+    			.setParameter("score", totalscore)
+    			.setParameter("standNavn", standNavn)
     	        .executeUpdate();
     }
 
     public Stemme finnStand(String s) {
     	return em.find(Stemme.class, s);
     }
+    
+    
 
     public List<Stemme> hentStand(String stand) {
         
