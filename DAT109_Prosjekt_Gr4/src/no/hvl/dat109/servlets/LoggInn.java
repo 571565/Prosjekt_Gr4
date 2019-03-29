@@ -30,12 +30,11 @@ public class LoggInn extends HttpServlet {
 
 		HttpSession sesjon = request.getSession(false);
 		
+		standid = (String) sesjon.getAttribute("standid");
+		
 		if (sesjon != null && sesjon.getAttribute("deltaker") != null) {
-			standid = (String) sesjon.getAttribute("standid");
 			response.sendRedirect("Stemme");
 			return;
-		} else {
-			standid = "UiB";
 		}
 
 		request.getRequestDispatcher("WEB-INF/login.jsp").forward(request, response);
@@ -67,7 +66,7 @@ public class LoggInn extends HttpServlet {
 			HttpSession sesjon = request.getSession(true);
 			
 			
-			sesjon.setMaxInactiveInterval(1000);
+			sesjon.setMaxInactiveInterval(20);
 			
 			
 			sesjon.setAttribute("tlf", tlf);

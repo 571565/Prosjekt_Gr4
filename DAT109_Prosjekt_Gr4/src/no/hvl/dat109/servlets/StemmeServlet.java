@@ -93,27 +93,29 @@ public class StemmeServlet extends HttpServlet {
 				sesjon.setAttribute("standid", request.getParameter("standid"));
 				
 				request.getRequestDispatcher("WEB-INF/Stemme.jsp").forward(request, response);
-				
+				return;
 				
 			}
 			
-		} else {
+		}
 			
 			standid = request.getParameter("standid");
 			
 			if (standid == null || standid == "") {
-				standid = "UiB";
+				standid = "Finn";
 				
 			}
+			if (sesjon != null)
+				sesjon.invalidate();
 			
 			sesjon = request.getSession(true);
 			
 			sesjon.setAttribute("standid", standid);
 
-			sesjon.setMaxInactiveInterval(1000);
+			sesjon.setMaxInactiveInterval(20);
 			
 			response.sendRedirect("LoggInn");
-		}
+		
 		
 		
 		
