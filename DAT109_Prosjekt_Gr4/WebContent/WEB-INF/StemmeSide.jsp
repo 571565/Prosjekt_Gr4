@@ -8,10 +8,12 @@
     <title>Hjem</title>
 </head>
 <body>
+<form method="post">
 	<h3>Tidligere stemmer</h3>
 	<c:forEach items="${stemme}" var="stemme">
-		<p><a href = "Stemme ">${stemme.stand}</a>, ${stemme.score} poeng</p>
+		<p><a href = "Stemme?standid=${stemme.stand}">${stemme.stand}</a>, ${stemme.score} poeng</p>
 	</c:forEach>
-    <p><input type="submit" value="Scan QR"></p>
+    <p><input type="submit" value="Logg Ut"></p>
+  </form>
 </body>
 </html>

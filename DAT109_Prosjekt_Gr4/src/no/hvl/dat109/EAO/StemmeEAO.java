@@ -25,19 +25,24 @@ public class StemmeEAO {
     }
     
     public void oppdaterStemme(Stemme s) {
-    	em.createQuery("UPDATE Stemme p SET p.score = :score")
+    	em.createQuery("UPDATE Stemme p SET p.score = :score WHERE p.deltaker = :deltaker AND p.stand = :stand")
     			.setParameter("score", s.getScore())
+    			.setParameter("deltaker", s.getDeltaker())
+    			.setParameter("stand", s.getStand())
     	        .executeUpdate();
     }
 
-    public Stemme finnStemme(String s) {
-    	return em.find(Stemme.class, s);
+ public List<Stemme> hentStemmerPaaStand(String stand) {
+        
+        return (List<Stemme>) em.createQuery("SELECT s FROM Stemme s WHERE s.stand LIKE :stand")
+        		.setParameter("stand", stand)
+        		.getResultList();
     }
 
-    public List<Stemme> hentStemmer(String stand) {
+    public List<Stemme> hentStemmer(String deltaker) {
         
-        return (List<Stemme>) em.createQuery("SELECT s FROM Stemme s WHERE s.deltaker LIKE :custStand")
-        		.setParameter("custStand", stand)
+        return (List<Stemme>) em.createQuery("SELECT s FROM Stemme s WHERE s.deltaker LIKE :deltaker")
+        		.setParameter("deltaker", deltaker)
         		.getResultList();
     }
 }

@@ -42,11 +42,10 @@ public class StemmeSide extends HttpServlet {
 		
 		HttpSession sesjon = request.getSession(false);
 		
-		 if (sesjon == null || sesjon.getAttribute("deltaker") == null) {
-			 response.sendRedirect("LoggInn");
-		 } else {
-			 request.getRequestDispatcher("WEB-INF/StemmeBekreftelse.jsp").forward(request, response);
-		 }
+		if (sesjon != null) 
+			sesjon.invalidate();
+		
+		response.sendRedirect("LoggInn");
 		
 		
 		

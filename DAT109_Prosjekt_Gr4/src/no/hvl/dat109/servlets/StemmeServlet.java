@@ -2,6 +2,7 @@ package no.hvl.dat109.servlets;
 
 import java.io.IOException;
 import java.net.HttpCookie;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -13,6 +14,10 @@ import javax.servlet.http.HttpSession;
 
 import no.hvl.dat109.Deltaker;
 import no.hvl.dat109.Stemme;
+<<<<<<< HEAD
+=======
+import no.hvl.dat109.EAO.StandEAO;
+>>>>>>> origin/Kjetil
 import no.hvl.dat109.EAO.StemmeEAO;
 
 @WebServlet("/Stemme")
@@ -22,6 +27,9 @@ public class StemmeServlet extends HttpServlet {
 	private Stemme stemme;
 	
 	private String standid;
+
+	@EJB
+	private StandEAO standEAO;
 
 	@EJB
 	private StemmeEAO stemmeEAO;
@@ -51,9 +59,15 @@ public class StemmeServlet extends HttpServlet {
 				
 				try {
 				stemmeEAO.leggTilStemme(stemme);
+				
 				} catch (Exception e) {
 					stemmeEAO.oppdaterStemme(stemme);
+					
 				}
+				List<Stemme> stemmer = stemmeEAO.hentStemmerPaaStand(stand);
+				Integer totalscore = stemmer.stream().filter(x -> x.getStand().equals(stand))
+						.mapToInt(x -> x.getScore()).sum();
+				standEAO.oppdaterTotalscore(totalscore, stand);
 				
 				
 				sesjon.setAttribute("score", score);
@@ -83,27 +97,32 @@ public class StemmeServlet extends HttpServlet {
 			Deltaker deltaker = (Deltaker) sesjon.getAttribute("deltaker");
 			if (deltaker != null) {
 				
-				request.getRequestDispatcher("WEB-INF/Stemme.jsp").forward(request, response);
+				sesjon.setAttribute("standid", request.getParameter("standid"));
 				
+				request.getRequestDispatcher("WEB-INF/Stemme.jsp").forward(request, response);
+				return;
 				
 			}
 			
-		} else {
+		}
+			
 			standid = request.getParameter("standid");
 			
 			if (standid == null || standid == "") {
-				standid = "Hvl";
+				standid = "Finn";
 				
 			}
+			if (sesjon != null)
+				sesjon.invalidate();
 			
 			sesjon = request.getSession(true);
 			
 			sesjon.setAttribute("standid", standid);
 
-			sesjon.setMaxInactiveInterval(1000);
+			sesjon.setMaxInactiveInterval(20);
 			
 			response.sendRedirect("LoggInn");
-		}
+		
 		
 		
 		

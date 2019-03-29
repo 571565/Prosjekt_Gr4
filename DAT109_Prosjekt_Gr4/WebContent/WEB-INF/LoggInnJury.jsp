@@ -4,18 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Telefon Nummer</title>
+<title> Logg Inn</title>
 </head>
 <body>
-<h2>Skriv inn ditt telefon nummer</h2>
 
 	<form method = "post">
 		<fieldset>
-			<label for = "tlf">Telefon nummer: </label><input type = "text" name ="tlf">
+			<label for = "password">Passord: </label><input type = "password" name ="password">
 			<p><input type="submit" value="Logg Inn"></p>
-			<a href="JuryLoggInn">Juryside</a>
 		</fieldset>
 	</form>
 
 </body>
-</html>
