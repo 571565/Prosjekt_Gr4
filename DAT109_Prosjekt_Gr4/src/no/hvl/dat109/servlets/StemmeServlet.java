@@ -14,10 +14,8 @@ import javax.servlet.http.HttpSession;
 
 import no.hvl.dat109.Deltaker;
 import no.hvl.dat109.Stemme;
-<<<<<<< HEAD
-=======
 import no.hvl.dat109.EAO.StandEAO;
->>>>>>> origin/Kjetil
+
 import no.hvl.dat109.EAO.StemmeEAO;
 
 @WebServlet("/Stemme")
@@ -49,7 +47,7 @@ public class StemmeServlet extends HttpServlet {
 
 
 				String tlf = deltaker.getTlf();
-				String standid = (String) sesjon.getAttribute("standid");
+				String stand = (String) sesjon.getAttribute("standid");
 				Integer score = Integer.parseInt(request.getParameter("score"));
 
 				
