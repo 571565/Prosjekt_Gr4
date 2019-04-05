@@ -90,6 +90,7 @@ public class StemmeServlet extends HttpServlet {
 			Deltaker deltaker = (Deltaker) sesjon.getAttribute("deltaker");
 			if (deltaker != null) {
 				
+				if (sesjon.getAttribute("standid") == null)
 				sesjon.setAttribute("standid", request.getParameter("standid"));
 				
 				request.getRequestDispatcher("WEB-INF/Stemme.jsp").forward(request, response);

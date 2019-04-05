@@ -25,12 +25,13 @@ public class LoggInn extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		
-		
-
 		HttpSession sesjon = request.getSession(false);
 		
+		if (sesjon != null)
 		standid = (String) sesjon.getAttribute("standid");
+		
+		if (standid == null || standid == "")
+			standid = request.getParameter("standid");
 		
 		if (sesjon != null && sesjon.getAttribute("deltaker") != null) {
 			response.sendRedirect("Stemme");

@@ -48,7 +48,6 @@ public class StemmeSide extends HttpServlet {
 		response.sendRedirect("LoggInn");
 		
 		
-		
 	}
 
 }
